@@ -2,7 +2,7 @@
 import React, { useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Environment, ContactShadows, Html } from "@react-three/drei";
-import { Mesh, Group } from "three";
+import { Mesh, Group, Vector3 } from "three";
 import { motion } from "framer-motion";
 
 // This is a simplified 3D apartment model component
@@ -71,10 +71,10 @@ function Model() {
   });
   
   const rooms = [
-    { id: "livingRoom", position: [1, 0.5, 0], size: [2, 1, 1.5], color: "#F6D984", name: "Living Room" },
-    { id: "kitchen", position: [-1, 0.5, 0], size: [1, 1, 1.5], color: "#E6C974", name: "Kitchen" },
-    { id: "bedroom", position: [0, 0.5, -1.5], size: [1.8, 1, 1], color: "#D6B964", name: "Bedroom" },
-    { id: "bathroom", position: [-1.5, 0.5, -1.5], size: [0.8, 1, 1], color: "#C6A954", name: "Bathroom" },
+    { id: "livingRoom", position: [1, 0.5, 0] as [number, number, number], size: [2, 1, 1.5] as [number, number, number], color: "#F6D984", name: "Living Room" },
+    { id: "kitchen", position: [-1, 0.5, 0] as [number, number, number], size: [1, 1, 1.5] as [number, number, number], color: "#E6C974", name: "Kitchen" },
+    { id: "bedroom", position: [0, 0.5, -1.5] as [number, number, number], size: [1.8, 1, 1] as [number, number, number], color: "#D6B964", name: "Bedroom" },
+    { id: "bathroom", position: [-1.5, 0.5, -1.5] as [number, number, number], size: [0.8, 1, 1] as [number, number, number], color: "#C6A954", name: "Bathroom" },
   ];
   
   const handleRoomClick = (roomId: string) => {
@@ -84,25 +84,25 @@ function Model() {
   return (
     <group ref={groupRef}>
       {/* Base/Floor */}
-      <mesh position={[0, -0.1, 0]} receiveShadow>
+      <mesh position={[0, -0.1, 0] as [number, number, number]} receiveShadow>
         <boxGeometry args={[5, 0.2, 4]} />
         <meshStandardMaterial color="#333333" />
       </mesh>
       
       {/* Outer walls */}
-      <mesh position={[0, 0.5, -2]} receiveShadow castShadow>
+      <mesh position={[0, 0.5, -2] as [number, number, number]} receiveShadow castShadow>
         <boxGeometry args={[5, 1, 0.1]} />
         <meshStandardMaterial color="#555555" />
       </mesh>
-      <mesh position={[0, 0.5, 2]} receiveShadow castShadow>
+      <mesh position={[0, 0.5, 2] as [number, number, number]} receiveShadow castShadow>
         <boxGeometry args={[5, 1, 0.1]} />
         <meshStandardMaterial color="#555555" />
       </mesh>
-      <mesh position={[-2.5, 0.5, 0]} receiveShadow castShadow>
+      <mesh position={[-2.5, 0.5, 0] as [number, number, number]} receiveShadow castShadow>
         <boxGeometry args={[0.1, 1, 4]} />
         <meshStandardMaterial color="#555555" />
       </mesh>
-      <mesh position={[2.5, 0.5, 0]} receiveShadow castShadow>
+      <mesh position={[2.5, 0.5, 0] as [number, number, number]} receiveShadow castShadow>
         <boxGeometry args={[0.1, 1, 4]} />
         <meshStandardMaterial color="#555555" />
       </mesh>
@@ -126,7 +126,7 @@ function Model() {
           />
           
           {(activeRoom === room.id || hovered === room.id) && (
-            <Html position={[0, 1.5, 0]} center>
+            <Html position={[0, 1.5, 0] as [number, number, number]} center>
               <div className="bg-black/80 text-white px-3 py-2 rounded text-sm whitespace-nowrap">
                 {room.name}
               </div>
@@ -136,17 +136,17 @@ function Model() {
       ))}
       
       {/* Example furniture */}
-      <mesh position={[1, 0.15, 0]} castShadow>
+      <mesh position={[1, 0.15, 0] as [number, number, number]} castShadow>
         <boxGeometry args={[1.2, 0.3, 0.8]} />
         <meshStandardMaterial color="#8B4513" />
       </mesh>
       
-      <mesh position={[-1, 0.3, 0]} castShadow>
+      <mesh position={[-1, 0.3, 0] as [number, number, number]} castShadow>
         <boxGeometry args={[0.6, 0.6, 0.6]} />
         <meshStandardMaterial color="#696969" />
       </mesh>
       
-      <mesh position={[0, 0.25, -1.5]} castShadow>
+      <mesh position={[0, 0.25, -1.5] as [number, number, number]} castShadow>
         <boxGeometry args={[1.5, 0.5, 0.8]} />
         <meshStandardMaterial color="#4B0082" />
       </mesh>

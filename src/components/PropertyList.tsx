@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Home, MapPin, Bed, Bath, SquareFoot } from "lucide-react";
+import { Home, MapPin, Bed, Bath, Square } from "lucide-react";
 
 interface Property {
   Id: string;
@@ -118,7 +118,7 @@ const PropertyCard = ({ property, index }: { property: Property; index: number }
             
             <div className="flex flex-col items-center">
               <div className="flex items-center mb-1">
-                <SquareFoot size={18} className="mr-1" />
+                <Square size={18} className="mr-1" />
                 <span className="font-medium">{property.Square_Feet__c}</span>
               </div>
               <span className="text-xs">Sq Ft</span>
